@@ -11,8 +11,9 @@ const getAll = () => {
 
 const getById = id => {
   // DO YOUR MAGIC
-  const [accountsID] = db.select("*").from("accounts").where("id", id).limit(1)
-  return(accountsID)
+  const accountsID = db.select("*").from("accounts").where("id", id).limit(1)
+  return accountsID
+  // return db.select("*").from("accounts").where("id",id).first()
 }
 
 const create = async account => {

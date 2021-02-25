@@ -12,10 +12,11 @@ router.get('/', async (req, res, next) => {
  }
 })
 
-router.get('/:id', checkAccountId(), async(req, res, next) => {
+router.get('/:id', checkAccountId, async (req, res, next) => {
   // DO YOUR MAGIC
   try{
-    res.json(req.account)
+    // console.log("in line 18",req.account)
+     res.json(req.account)
   }catch(err){
     next(err)
   }
