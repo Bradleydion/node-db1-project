@@ -12,37 +12,42 @@ router.get('/', async (req, res, next) => {
  }
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', checkAccountId(), async(req, res, next) => {
   // DO YOUR MAGIC
-})try{
+  try{
+    res.json(req.account)
+  }catch(err){
+    next(err)
+  }
+})
 
-}catch(err){
-  next(err)
-}
 
 router.post('/', (req, res, next) => {
   // DO YOUR MAGIC
-})try{
+})
+// try{
   
-}catch(err){
-  next(err)
-}
+// }catch(err){
+//   next(err)
+// }
 
 router.put('/:id', (req, res, next) => {
   // DO YOUR MAGIC
-});try{
+})
+// try{
   
-}catch(err){
-  next(err)
-}
+// }catch(err){
+//   next(err)
+// }
 
 router.delete('/:id', (req, res, next) => {
   // DO YOUR MAGIC
-})try{
+})
+// try{
   
-}catch(err){
-  next(err)
-}
+// }catch(err){
+//   next(err)
+// }
 
 router.use((err, req, res, next) => { // eslint-disable-line
   // CALL next(err) IF THE PROMISE REJECTS INSIDE YOUR ENDPOINTS

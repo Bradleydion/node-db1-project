@@ -54,14 +54,15 @@ exports.checkAccountNameUnique = async (req, res, next) => {
 
 exports.checkAccountId = async (req, res, next) => {
   // DO YOUR MAGIC
-  await 
-  accounts.getById(req.params.id)
-  .then((account)=>{
-    if(account){
-      req.account=account
-      next()}
-      else{
-        res.status(400).json({message:"account not found"})
-      }
-  }) 
+
+await accounts.getById(req.params.id)
+try{(account)=>{
+  if (account){
+    req.account = account
+    next()} else{
+      res.status(400).json({message:"account not found"})
+    }
+}}catch(err){
+  next(err)
+}
 }
