@@ -1,6 +1,7 @@
 const db = require("../../data/db-config")
 
 
+
 const getAll = () => {
   // DO YOUR MAGIC
   const accounts = db.select("*").from("accounts")
