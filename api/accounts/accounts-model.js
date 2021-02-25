@@ -33,7 +33,7 @@ const updateById = async (id, account) => {
 
 const deleteById = async id => {
   // DO YOUR MAGIC
-  await db("account").where("id",id).del()
+  await db("accounts").where("id",id).del()
   return (`Account ${id} has been deleted`)
 }
 

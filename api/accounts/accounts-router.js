@@ -23,32 +23,37 @@ router.get('/:id', checkAccountId, async (req, res, next) => {
 })
 
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAccountPayload,checkAccountNameUnique, async (req, res, next) => {
   // DO YOUR MAGIC
+  try{ const result = await accounts.create(req.body)
+  res.json(result)
+}catch(err){
+  next(err)
+}
 })
-// try{
-  
-// }catch(err){
-//   next(err)
-// }
 
-router.put('/:id', (req, res, next) => {
-  // DO YOUR MAGIC
-})
-// try{
-  
-// }catch(err){
-//   next(err)
-// }
 
-router.delete('/:id', (req, res, next) => {
+router.put('/:id',checkAccountPayload, checkAccountId, checkAccountNameUnique, async (req, res, next) => {
   // DO YOUR MAGIC
+  try{
+  const results = await accounts.updateById(req.params.id,req.body)
+  res.json(results)
+}catch(err){
+  next(err)
+}
 })
-// try{
-  
-// }catch(err){
-//   next(err)
-// }
+
+
+router.delete('/:id',checkAccountId, async (req, res, next) => {
+  // DO YOUR MAGIC
+  try{
+  await accounts.deleteById(req.params.id)
+  res.status(204).end()
+}catch(err){
+  next(err)
+}
+})
+
 
 router.use((err, req, res, next) => { // eslint-disable-line
   // CALL next(err) IF THE PROMISE REJECTS INSIDE YOUR ENDPOINTS
